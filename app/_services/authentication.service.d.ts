@@ -8,12 +8,15 @@ export declare class AuthenticationService {
     token: any;
     time: number;
     intervalId: any;
-    private url;
-    private body;
-    ip: any;
+    private localConfigurationFile;
     constructor(http: Http, route: Router);
-    login(url: string, body: string): Observable<boolean>;
-    getUrl(login: string, senha: string): Observable<string>;
+    login(url: string, body: string, authorization: string): Observable<boolean>;
+    setLocalConfigurationFile(path: string): void;
+    getUrl(login: string, senha: string, arquivo: string): Observable<{
+        url: string;
+        body: any;
+        authorization: any;
+    }>;
     periodicIncrement(sessionTime: number): void;
     cancelPeriodicIncrement(): void;
     getSitemap(): Observable<any>;
