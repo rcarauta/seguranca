@@ -9,7 +9,6 @@ export class RedirectService {
 
   public timeSession: number = 3600;
 
-  private client_id:number = 145;
 
   public localDateTime: number;
 
@@ -42,19 +41,10 @@ export class RedirectService {
   }
 
   authenticateClient(){
-    this.authenticationService.getUrl(this.client_id,'/seguranca/url_security.json')
+    this.authenticationService.getUrl('/seguranca/url_security.json')
       .subscribe(resultado =>{
-        this.authenticationService.authenticateClient(resultado.url, resultado.body,resultado.authorization)
-          .subscribe (result => {
-              if (result === true) {
-                this.error = '';
-                window.location.href = "http://127.0.0.1:2301/authorize?response_type=code&client_id="+this.client_id+"&state=xyz%20&redirect_uri=https://github.com/erlangMS/ems-bus";
-              }
-            },
-            err => {
-              this.error = 'Código de autenticação do cliente inválido.';
-            }
-          );
+        localStorage.setItem('authorization',JSON.stringify(resultado.authorization));
+        window.location.href = resultado.url;
       });
   }
 
