@@ -26,13 +26,18 @@ export class PessoaComponent implements OnInit {
   hidden:boolean = true;
 
 
+  findUser(){
+    this.pessoaService.findUser()
+      .subscribe(result =>{
+      });
+  }
+
   onSubmit() {
     this.pessoaService.insert(this.model)
       .subscribe(result => {
         if (result.nome !== '') {
           this.route.navigate(['/pessoa/lista']);
         } else {
-          console.log('Erro ao cadastrar');
         }
       });
 
@@ -47,9 +52,8 @@ export class PessoaComponent implements OnInit {
 
   findAluno() {
     this.pessoaService.findAluno()
-      .subscribe(result =>
-        console.log(result)
-      )
+      .subscribe(result =>{
+      });
   }
 
   newHero() {
