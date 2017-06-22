@@ -90,6 +90,10 @@ export class AuthenticationService {
 
 
     getClientCode(client:string):Observable<any>{
+        let count:string[] = client.split("#");
+        if(count.length > 1){
+            client = count[0];
+        }
         return this.http.get(DefaultHeaders.host+''+DefaultHeaders.port+'/auth/client?filter={"name":"'+client+'"}')
             .map((resposta) => {
                 let json = resposta.json();
