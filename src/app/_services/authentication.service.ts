@@ -45,7 +45,8 @@ export class AuthenticationService {
         }
       });
   }
-
+    
+    
 
   getUrlUser(arquivo:string):Observable<any> {
     let arquivoExterno = localStorage.getItem('externalFile');
@@ -154,10 +155,10 @@ export class AuthenticationService {
     this.intervalId = setInterval(() => {
       if(this.time == 0 || !localStorage.getItem('token')){
         this.logout();
-        return 0;
+      } else {
+          this.time = this.time - 1000;
+          return this.time;
       }
-      this.time = this.time - 1000;
-      return this.time;
     }, 1000);
 
   };

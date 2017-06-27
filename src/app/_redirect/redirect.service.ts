@@ -20,7 +20,11 @@ export class RedirectService implements OnDestroy {
 
   startInitVerifySessionToken() {
               if (localStorage.getItem ('token')) {
-                  AuthenticationService.currentUser.token = localStorage.getItem ('token');
+                  this.authenticationService.getUrlUser('/seguranca/url_security.json')
+                      .subscribe(resultado =>{
+                          this.authenticationService.periodicIncrement(3600);
+                          AuthenticationService.currentUser.token = localStorage.getItem ('token');
+                      });
               }
 
               if (localStorage.getItem ("dateAccessPage") && AuthenticationService.currentUser.token != "") {

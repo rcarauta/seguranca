@@ -1,10 +1,10 @@
 {
-    "name": "angular-library-starter",
-    "version": "0.0.1",
-    "description": "Build an Angular library compatible with AoT compilation and Tree shaking",
-    "main": "./bundles/angular-library-starter.umd.js",
-    "module": "./modules/angular-library-starter.es5.js",
-    "es2015": "./modules/angular-library-starter.js",
+    "name": "Seguranca",
+    "version": "3.0.0",
+    "description": "Módulo de segurança oauth2",
+    "main": "./bundles/seguranca.umd.js",
+    "module": "./modules/seguranca.es5.js",
+    "es2015": "./modules/seguranca.js",
     "scripts": {
         "build": "node build.js",
         "test": "karma start",
@@ -17,12 +17,8 @@
     "author": "",
     "repository": {
         "type": "git",
-        "url": "https://github.com/robisim74/angular-library-starter.git"
+        "url": "github.com/rcarauta/seguranca.git"
     },
-    "bugs": {
-        "url": "https://github.com/robisim74/angular-library-starter/issues"
-    },
-    "homepage": "https://github.com/robisim74/angular-library-starter",
     "keywords": [
         "angular",
         "javascript",
