@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, XSRFStrategy, CookieXSRFStrategy, RequestOptions, Http } from '@angular/http';
+import { HttpModule, XSRFStrategy, CookieXSRFStrategy, RequestOptions, Http, ResponseOptions } from '@angular/http';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 
@@ -20,6 +20,7 @@ import {QuestaoModule} from "./questao/questao.module";
 import {routing} from "./app.routing";
 import {CookieService} from "./_cookie/cookie.service";
 import {RedirectService} from "./_redirect/redirect.service";
+import {DefaultResponse} from "./_response/default.response.service";
 
 
 @NgModule({
@@ -47,6 +48,10 @@ import {RedirectService} from "./_redirect/redirect.service";
     {
       provide: RequestOptions,
       useClass: DefaultHeaders
+    },
+    {
+      provide: ResponseOptions,
+      useClass: DefaultResponse
     },
     {
       provide: LocationStrategy,

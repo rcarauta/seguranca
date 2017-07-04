@@ -19,6 +19,14 @@ export class RedirectService implements OnDestroy {
 
 
   startInitVerifySessionToken() {
+              if(localStorage.getItem("token") && localStorage.getItem("dataAccessPage")){
+                  let timeAccess = Date.now();
+                  let total = timeAccess - Number(localStorage.getItem("dateAccessPage"));
+                  if(total > 360000){
+                      this.authenticationService.reset();
+                  }
+              }
+
               if (localStorage.getItem ('token')) {
                   this.authenticationService.getUrlUser('/seguranca/url_security.json')
                       .subscribe(resultado =>{

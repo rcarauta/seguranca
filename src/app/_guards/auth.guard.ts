@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
-import {AuthenticationService} from "../_services/authentication.service";
+import { CanActivate, ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router';
+
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
+  public static hasAccess:string[] = [];
 
   constructor() { }
 
-  canActivate() {
-    if(localStorage.getItem('token') != "") {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+
+    if( AuthGuard.hasAccess.indexOf(route.data['nome']) != -1) {
       return true;
     }else {
       return false;
